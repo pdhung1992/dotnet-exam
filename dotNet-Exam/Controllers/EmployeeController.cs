@@ -55,46 +55,50 @@ public class EmployeeController: Controller
     [HttpGet]
     public IActionResult Edit(int id)
     {
-        Department findDep = dataContext.Departments.Find(id);
-        if (findDep == null)
+        Employee findEmp = dataContext.Employees.Find(id);
+        if (findEmp == null)
         {
             return NotFound();
         }
 
-        return View(new DepartmentModel()
+        return View(new EmployeeModel()
         {
-            id = findDep.id,
-            name = findDep.name
+            id = findEmp.id,
+            fullname = findEmp.fullname,
+            email = findEmp.email,
+            Department = findEmp.Department
         });
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(DepartmentModel updateDep)
+    public IActionResult Edit(EmployeeModel updateEmp)
     {
         if (ModelState.IsValid)
         {
-            dataContext.Departments.Update(new Department
+            dataContext.Employees.Update(new Employee()
             {
-                id = updateDep.id,
-                name = updateDep.name
+                id = updateEmp.id,
+                fullname = updateEmp.fullname,
+                email = updateEmp.email,
+                Department = updateEmp.Department
             });
             dataContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        return View(updateDep);
+        return View(updateEmp);
     }
 
     public IActionResult Delete(int id)
     {
-        Department deleteDep = dataContext.Departments.Find(id);
-        if (deleteDep == null)
+        Employee deleteEmp = dataContext.Employees.Find(id);
+        if (deleteEmp == null)
         {
             return NotFound();
         }
 
-        dataContext.Departments.Remove(deleteDep);
+        dataContext.Employees.Remove(deleteEmp);
         dataContext.SaveChanges();
         return RedirectToAction("Index");
     }
