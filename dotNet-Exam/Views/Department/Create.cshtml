@@ -1,0 +1,30 @@
+@page
+@model dotNet_Exam.Models.DepartmentModel
+
+@{
+    Layout = Layout;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <div class="container">
+        <form action="/Department/Create" method="post">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Name" placeholder="name@example.com" name="name">
+                <label for="name">Department name</label>
+                </div>
+            <p class="text-danger">
+                @Html.ValidationMessageFor(dep => dep.name)
+            </p>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

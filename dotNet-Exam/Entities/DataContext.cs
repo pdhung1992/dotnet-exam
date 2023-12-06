@@ -8,6 +8,9 @@ namespace dotNet_Exam.Entities
         {
             
         }
+        
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     } 
 }
 

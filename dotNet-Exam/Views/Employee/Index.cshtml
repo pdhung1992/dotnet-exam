@@ -1,0 +1,48 @@
+
+@model List<dotNet_Exam.Entities.Employee>
+
+@{
+    Layout = Layout;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <h1>Employees List</h1>
+        <div class="text-end">
+            <a asp-action="Create" asp-controller="Employee"><button class="btn btn-success">Add new Employee</button></a>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Full name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Department</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var employee in Model)
+                        {
+                            <tr>
+                                <th scope="row">@employee.id</th>
+                                <td>@employee.fullname</td>
+                                <td>@employee.email</td>
+                                <td>@employee.Department.name</td>
+                                <td>
+                                    <a asp-controller="Department" asp-action="Edit" asp-route-id="@employee.id"><button class="btn btn-warning">Edit</button></a>
+                                    <a onclick="return confirm('Are u sure?')" asp-controller="Department" asp-action="Delete" asp-route-id="@employee.id"><button class="btn btn-danger">Delete</button></a>
+                                </td>
+                            </tr>
+                        }
+          </tbody>
+        </table>
+</div>
+</body>
+</html>

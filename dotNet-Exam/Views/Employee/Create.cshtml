@@ -1,0 +1,44 @@
+@page
+@model dotNet_Exam.Models.EmployeeModel
+
+@{
+    Layout = Layout;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div>
+    <div class="container">
+            <form action="/Employee/Create" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="fullname" placeholder="name@example.com" name="fullname">
+                    <label for="fullname">Full name</label>
+                    </div>
+                <p class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.fullname)
+                </p>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+                    <label for="email">Email</label>
+                </div>
+                <p class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.email)
+                </p>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="depId" placeholder="name@example.com" name="depId">
+                    <label for="depId">Department ID</label>
+                </div>
+                <p class="text-danger">
+                    @Html.ValidationMessageFor(emp => emp.depId)
+                </p>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+</div>
+</body>
+</html>
